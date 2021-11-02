@@ -15,5 +15,6 @@
         <module>ware</module>
         <module>order</module>
         <module>member</module>
+        <module>common</module>
     </modules>
 </project>

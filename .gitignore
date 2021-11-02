@@ -21,3 +21,9 @@ buildNumber.properties
 
 **/.gitignore
 **/HELP.md
+**/mall.iml
+**/common.iml
+**/member.iml
+**/order.iml
+**/coupon.iml
+**/ware.iml
