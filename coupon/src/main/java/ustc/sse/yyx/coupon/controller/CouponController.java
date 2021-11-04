@@ -1,14 +1,14 @@
 package ustc.sse.yyx.coupon.controller;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
 
 import ustc.sse.yyx.coupon.entity.CouponEntity;
 import ustc.sse.yyx.coupon.service.CouponService;
@@ -18,17 +18,40 @@ import ustc.sse.yyx.common.utils.R;
 
 
 /**
- * 优惠券信息
+ * Coupon Information
  *
  * @author Yuxuan Yang
  * @email yxyang21@mail.ustc.edu.cn
  * @date 2021-11-02 14:51:46
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {
+    private final CouponService couponService;
+
+    @Value(value = "${coupon.user.name}")
+    private String name;
+
+    @Value(value = "${coupon.user.age}")
+    private int age;
+
     @Autowired
-    private CouponService couponService;
+    public CouponController(CouponService couponService) {
+        this.couponService = couponService;
+    }
+
+    @GetMapping(value = "/member/list")
+    public R memberCoupons() {
+        CouponEntity couponEntity = new CouponEntity();
+        couponEntity.setCouponName("10% OFF");
+        return R.ok().put("coupons", Collections.singletonList(couponEntity));
+    }
+
+    @GetMapping(value = "/test")
+    public R test() {
+        return Objects.requireNonNull(R.ok().put("name", name)).put("age", age);
+    }
 
     /**
      * 列表

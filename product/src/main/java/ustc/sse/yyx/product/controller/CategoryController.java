@@ -1,6 +1,7 @@
 package ustc.sse.yyx.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +28,19 @@ import ustc.sse.yyx.common.utils.R;
 @RestController
 @RequestMapping("product/category")
 public class CategoryController {
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     /**
-     * 列表
+     * 分类及子分类，并以树形结构组装
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
-
-        return R.ok().put("page", page);
+    @RequestMapping("/list/tree")
+    public R list() {
+        List<CategoryEntity> entityList = categoryService.listWithTree();
+        return R.ok().put("data", entityList);
     }
 
 

@@ -16,5 +16,6 @@
         <module>order</module>
         <module>member</module>
         <module>common</module>
+        <module>renren-fast</module>
     </modules>
 </project>
