@@ -17,5 +17,6 @@
         <module>member</module>
         <module>common</module>
         <module>renren-fast</module>
+        <module>third-party</module>
     </modules>
 </project>

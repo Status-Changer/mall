@@ -1,7 +1,6 @@
-package comtroller;
+package ustc.sse.yyx.thirdparty.controller;
 
 import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
@@ -31,11 +30,11 @@ public class OssController {
     private String accessId;
 
     @Autowired
-    public OssController(OSSClient ossClient) {
+    public OssController(OSS ossClient) {
         this.ossClient = ossClient;
     }
 
-    @RequestMapping(value = "/oss/policy")
+    @RequestMapping("/oss/policy")
     public R policy() {
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
         String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
