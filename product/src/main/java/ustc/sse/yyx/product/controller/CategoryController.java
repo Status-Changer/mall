@@ -78,7 +78,9 @@ public class CategoryController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] catIds){
+    public R delete(@RequestBody Long[] catIds) {
+        // 检查当前删除的菜单是否被其他地方引用
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
 		categoryService.removeByIds(Arrays.asList(catIds));
 
         return R.ok();
