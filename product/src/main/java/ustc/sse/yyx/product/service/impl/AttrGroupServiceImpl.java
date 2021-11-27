@@ -1,5 +1,6 @@
 package ustc.sse.yyx.product.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -20,10 +21,28 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<AttrGroupEntity> page = this.page(
                 new Query<AttrGroupEntity>().getPage(params),
-                new QueryWrapper<AttrGroupEntity>()
+                new QueryWrapper<>()
         );
 
         return new PageUtils(page);
     }
+
+    @Override
+    public PageUtils queryPage(Map<String, Object> params, Long catelogId) {
+        if (catelogId == 0) {
+            return queryPage(params);
+        }
+        String key = (String) params.get("key");
+        QueryWrapper<AttrGroupEntity> attrGroupEntityQueryWrapper =
+                new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogId);
+        if (!StringUtils.isEmpty(key)) {
+            attrGroupEntityQueryWrapper.and((obj) ->
+                    obj.eq("attr_group_id", key).or().like("attr_group_name", key));
+        }
+        IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params),
+                attrGroupEntityQueryWrapper);
+        return new PageUtils(page);
+    }
+
 
 }

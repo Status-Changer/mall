@@ -1,5 +1,6 @@
 package ustc.sse.yyx.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -44,5 +45,8 @@ public class AttrGroupEntity implements Serializable {
 	 * ��������id
 	 */
 	private Long catelogId;
+
+	@TableField(exist = false)
+	private Long[] catelogPath;
 
 }

@@ -1,20 +1,20 @@
 package ustc.sse.yyx.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import ustc.sse.yyx.product.entity.AttrEntity;
 import ustc.sse.yyx.product.entity.AttrGroupEntity;
 import ustc.sse.yyx.product.service.AttrGroupService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
-
+import ustc.sse.yyx.product.service.AttrService;
+import ustc.sse.yyx.product.service.CategoryService;
 
 
 /**
@@ -27,19 +27,34 @@ import ustc.sse.yyx.common.utils.R;
 @RestController
 @RequestMapping("product/attrgroup")
 public class AttrGroupController {
+    private final AttrGroupService attrGroupService;
+    private final CategoryService categoryService;
+    private final AttrService attrService;
+
     @Autowired
-    private AttrGroupService attrGroupService;
+    public AttrGroupController(AttrGroupService attrGroupService,
+                               CategoryService categoryService,
+                               AttrService attrService) {
+        this.attrGroupService = attrGroupService;
+        this.categoryService = categoryService;
+        this.attrService = attrService;
+    }
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = attrGroupService.queryPage(params);
-
-        return R.ok().put("page", page);
+    @RequestMapping("/list/{catelogId}")
+    public R list(@RequestParam Map<String, Object> params,
+                  @PathVariable(value = "catelogId") Long catelogId) {
+        PageUtils pageUtils = attrGroupService.queryPage(params, catelogId);
+        return R.ok().put("page", pageUtils);
     }
 
+    @GetMapping("/{attrGroupId}/attr/relation")
+    public R attrRelation(@PathVariable("attrGroupId") Long attrGroupId) {
+        List<AttrEntity> attrEntityList = attrService.getRelationAttr(attrGroupId);
+        return R.ok().put("data", attrEntityList);
+    }
 
     /**
      * 信息
@@ -47,7 +62,9 @@ public class AttrGroupController {
     @RequestMapping("/info/{attrGroupId}")
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
 		AttrGroupEntity attrGroup = attrGroupService.getById(attrGroupId);
-
+        Long catelogId = attrGroup.getCatelogId();
+        Long[] path = categoryService.findCatelogPath(catelogId);
+        attrGroup.setCatelogPath(path);
         return R.ok().put("attrGroup", attrGroup);
     }
 
