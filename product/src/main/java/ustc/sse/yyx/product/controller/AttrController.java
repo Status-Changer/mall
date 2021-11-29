@@ -10,6 +10,7 @@ import ustc.sse.yyx.product.entity.AttrEntity;
 import ustc.sse.yyx.product.service.AttrService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
+import ustc.sse.yyx.product.vo.AttrGroupRelationVo;
 import ustc.sse.yyx.product.vo.AttrResponseVo;
 import ustc.sse.yyx.product.vo.AttrVo;
 
@@ -48,6 +49,8 @@ public class AttrController {
 
         return R.ok().put("page", page);
     }
+
+
 
 
     /**

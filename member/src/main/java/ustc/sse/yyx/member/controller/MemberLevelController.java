@@ -27,8 +27,12 @@ import ustc.sse.yyx.common.utils.R;
 @RestController
 @RequestMapping("member/memberlevel")
 public class MemberLevelController {
+    private final MemberLevelService memberLevelService;
+
     @Autowired
-    private MemberLevelService memberLevelService;
+    public MemberLevelController(MemberLevelService memberLevelService) {
+        this.memberLevelService = memberLevelService;
+    }
 
     /**
      * 列表

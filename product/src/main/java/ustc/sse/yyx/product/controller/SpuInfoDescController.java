@@ -1,6 +1,7 @@
 package ustc.sse.yyx.product.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import ustc.sse.yyx.common.utils.R;
 public class SpuInfoDescController {
     @Autowired
     private SpuInfoDescService spuInfoDescService;
+
 
     /**
      * 列表

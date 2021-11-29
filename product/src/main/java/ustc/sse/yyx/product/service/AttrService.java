@@ -3,6 +3,7 @@ package ustc.sse.yyx.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.product.entity.AttrEntity;
+import ustc.sse.yyx.product.vo.AttrGroupRelationVo;
 import ustc.sse.yyx.product.vo.AttrResponseVo;
 import ustc.sse.yyx.product.vo.AttrVo;
 
@@ -29,5 +30,9 @@ public interface AttrService extends IService<AttrEntity> {
     void updateAttr(AttrVo attr);
 
     List<AttrEntity> getRelationAttr(Long attrGroupId);
+
+    void deleteRelation(AttrGroupRelationVo[] attrGroupRelationVos);
+
+    PageUtils getNoRelationAttr(Map<String, Object> params, Long attrGroupId);
 }
 
