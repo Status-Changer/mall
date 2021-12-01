@@ -15,6 +15,7 @@ public class AttrVo {
     private Long enable;
     private Long catelogId;
     private Integer showDesc;
+    private Integer valueType;
 
     private Long attrGroupId;
 }

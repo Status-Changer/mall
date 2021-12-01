@@ -14,7 +14,7 @@ import ustc.sse.yyx.product.entity.SpuInfoEntity;
 import ustc.sse.yyx.product.service.SpuInfoService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
-
+import ustc.sse.yyx.product.vo.SpuSaveVo;
 
 
 /**
@@ -55,9 +55,8 @@ public class SpuInfoController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
-
+    public R save(@RequestBody SpuSaveVo spuSaveVo){
+        spuInfoService.saveSpuInfo(spuSaveVo);
         return R.ok();
     }
 

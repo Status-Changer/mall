@@ -90,7 +90,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         }
 
         String key = (String) params.get("key");
-        if (StringUtils.isEmpty(key)) {
+        if (!StringUtils.isEmpty(key)) {
             queryWrapper.and((wrapper) -> wrapper.eq("attr_id", key).or().like("attr_name", key));
         }
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), queryWrapper);

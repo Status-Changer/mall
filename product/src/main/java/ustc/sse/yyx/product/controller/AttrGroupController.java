@@ -17,6 +17,7 @@ import ustc.sse.yyx.common.utils.R;
 import ustc.sse.yyx.product.service.AttrService;
 import ustc.sse.yyx.product.service.CategoryService;
 import ustc.sse.yyx.product.vo.AttrGroupRelationVo;
+import ustc.sse.yyx.product.vo.AttrGroupWithAttrsVo;
 
 
 /**
@@ -61,6 +62,15 @@ public class AttrGroupController {
         List<AttrEntity> attrEntityList = attrService.getRelationAttr(attrGroupId);
         return R.ok().put("data", attrEntityList);
     }
+
+    @GetMapping("{catelogId}/withattr")
+    public R getAttrGroupWithAttrs(@PathVariable("catelogId") Long catelogId) {
+        // 查出当前分类下的所有属性分组
+        // 查出每个属性分组的所有属性
+        List<AttrGroupWithAttrsVo> attrGroupWithAttrsVos = attrGroupService.getAttrGroupWithAttrsByCatelogId(catelogId);
+        return R.ok().put("data", attrGroupWithAttrsVos);
+    }
+
 
     @GetMapping("{attrGroupId}/noattr/relation")
     public R attrNoRelation(@PathVariable("attrGroupId") Long attrGroupId,
