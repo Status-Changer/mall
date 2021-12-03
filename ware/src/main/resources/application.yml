@@ -6,6 +6,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: mall-ware
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
 
 
 mybatis-plus:
@@ -15,3 +19,7 @@ mybatis-plus:
       id-type: auto
 server:
   port: 11000
+
+logging:
+  level:
+    ustc.sse.yyx.ware: debug

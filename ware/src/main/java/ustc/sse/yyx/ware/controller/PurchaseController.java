@@ -2,6 +2,7 @@ package ustc.sse.yyx.ware.controller;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,7 +48,6 @@ public class PurchaseController {
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		PurchaseEntity purchase = purchaseService.getById(id);
-
         return R.ok().put("purchase", purchase);
     }
 
