@@ -1,5 +1,6 @@
 package ustc.sse.yyx.product.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -22,7 +23,8 @@ public class SpuInfoDescEntity implements Serializable {
 	/**
 	 * ��Ʒid
 	 */
-	@TableId
+	// 不是自增 要手动输入
+	@TableId(type = IdType.INPUT)
 	private Long spuId;
 	/**
 	 * ��Ʒ����

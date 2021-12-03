@@ -3,6 +3,7 @@
   */
 package ustc.sse.yyx.product.vo;
 import lombok.Data;
+import ustc.sse.yyx.common.to.MemberPrice;
 
 import java.math.BigDecimal;
 import java.util.List;

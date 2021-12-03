@@ -1,10 +1,13 @@
 package ustc.sse.yyx.product.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +17,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
+import ustc.sse.yyx.common.to.MemberPrice;
 import ustc.sse.yyx.common.to.SkuReductionTo;
 import ustc.sse.yyx.common.to.SpuBoundsTo;
 import ustc.sse.yyx.common.utils.PageUtils;
@@ -68,6 +72,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageUtils(page);
     }
 
+    // TODO: 高级部分完善非成功情况的处理
     @Transactional
     @Override
     public void saveSpuInfo(SpuSaveVo spuSaveVo) {
@@ -143,7 +148,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                     skuImagesEntity.setImgUrl(image.getImgUrl());
                     skuImagesEntity.setDefaultImg(image.getDefaultImg());
                     return skuImagesEntity;
-                }).collect(Collectors.toList());
+                }).filter(skuImagesEntity -> !StringUtils.isEmpty(skuImagesEntity.getImgUrl())).collect(Collectors.toList());
                 skuImagesService.saveBatch(skuImagesEntities);
 
                 // 6.3 SKU销售属性信息 `pms_sku_sale_attr_value`
@@ -160,14 +165,14 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                 SkuReductionTo skuReductionTo = new SkuReductionTo();
                 BeanUtils.copyProperties(sku, skuReductionTo);
                 skuReductionTo.setSkuId(skuId);
-                R r1 = couponFeignService.saveSkuReduction(skuReductionTo);
-                if (r1.getCode() != 0) {
-                    log.error("Feign: SKU优惠信息保存失败");
+                if (skuReductionTo.getFullCount() > 0 || skuReductionTo.getFullPrice().compareTo(new BigDecimal(0)) > 0) {
+                    R r1 = couponFeignService.saveSkuReduction(skuReductionTo);
+                    if (r1.getCode() != 0) {
+                        log.error("Feign: SKU优惠信息保存失败");
+                    }
                 }
             });
-
         }
-
     }
 
     @Override
