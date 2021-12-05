@@ -1,15 +1,18 @@
 package ustc.sse.yyx.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import ustc.sse.yyx.product.entity.AttrEntity;
+import ustc.sse.yyx.product.entity.ProductAttrValueEntity;
 import ustc.sse.yyx.product.service.AttrService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
+import ustc.sse.yyx.product.service.ProductAttrValueService;
 import ustc.sse.yyx.product.vo.AttrGroupRelationVo;
 import ustc.sse.yyx.product.vo.AttrResponseVo;
 import ustc.sse.yyx.product.vo.AttrVo;
@@ -26,10 +29,19 @@ import ustc.sse.yyx.product.vo.AttrVo;
 @RequestMapping("product/attr")
 public class AttrController {
     private final AttrService attrService;
+    private final ProductAttrValueService productAttrValueService;
 
     @Autowired
-    public AttrController(AttrService attrService) {
+    public AttrController(AttrService attrService,
+                          ProductAttrValueService productAttrValueService) {
         this.attrService = attrService;
+        this.productAttrValueService = productAttrValueService;
+    }
+
+    @GetMapping("/base/listforspu/{spuId}")
+    public R baseAttrListForSpu(@PathVariable("spuId") Long spuId) {
+        List<ProductAttrValueEntity> productAttrValueEntities = productAttrValueService.baseAttrListForSpu(spuId);
+        return R.ok().put("data", productAttrValueEntities);
     }
 
     @GetMapping("/{attrType}/list/{catelogId}")

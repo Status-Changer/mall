@@ -1,21 +1,17 @@
 package ustc.sse.yyx.ware.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ustc.sse.yyx.ware.entity.PurchaseEntity;
 import ustc.sse.yyx.ware.service.PurchaseService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
-
+import ustc.sse.yyx.ware.vo.MergeVo;
+import ustc.sse.yyx.ware.vo.PurchaseDoneVo;
 
 
 /**
@@ -28,8 +24,37 @@ import ustc.sse.yyx.common.utils.R;
 @RestController
 @RequestMapping("ware/purchase")
 public class PurchaseController {
+    private final PurchaseService purchaseService;
+
     @Autowired
-    private PurchaseService purchaseService;
+    public PurchaseController(PurchaseService purchaseService) {
+        this.purchaseService = purchaseService;
+    }
+
+    @PostMapping(value = "received")
+    public R receive(@RequestBody List<Long> ids) {
+        purchaseService.receive(ids);
+        return R.ok();
+    }
+
+
+    @GetMapping(value = "/unreceive/list")
+    public R unreceivedList(@RequestParam Map<String, Object> params) {
+        PageUtils page = purchaseService.queryPageUnreceived(params);
+        return R.ok().put("page", page);
+    }
+
+    @PostMapping(value = "/merge")
+    public R merge(@RequestBody MergeVo mergeVo) {
+        purchaseService.mergePurchase(mergeVo);
+        return R.ok();
+    }
+
+    @PostMapping(value = "/done")
+    public R finishPurchasing(@RequestBody PurchaseDoneVo purchaseDoneVo) {
+        purchaseService.done(purchaseDoneVo);
+        return R.ok();
+    }
 
     /**
      * 列表
@@ -37,7 +62,6 @@ public class PurchaseController {
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = purchaseService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
