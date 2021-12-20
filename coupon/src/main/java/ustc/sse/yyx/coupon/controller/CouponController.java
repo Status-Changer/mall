@@ -30,12 +30,6 @@ import ustc.sse.yyx.common.utils.R;
 public class CouponController {
     private final CouponService couponService;
 
-    @Value(value = "${coupon.user.name}")
-    private String name;
-
-    @Value(value = "${coupon.user.age}")
-    private int age;
-
     @Autowired
     public CouponController(CouponService couponService) {
         this.couponService = couponService;
@@ -46,11 +40,6 @@ public class CouponController {
         CouponEntity couponEntity = new CouponEntity();
         couponEntity.setCouponName("10% OFF");
         return R.ok().put("coupons", Collections.singletonList(couponEntity));
-    }
-
-    @GetMapping(value = "/test")
-    public R test() {
-        return Objects.requireNonNull(R.ok().put("name", name)).put("age", age);
     }
 
     /**
