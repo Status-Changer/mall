@@ -11,5 +11,5 @@ import java.util.List;
 @FeignClient("mall-search")
 public interface SearchFeignService {
     @PostMapping("/search/save/product")
-    public R setProductStatusUp(@RequestBody List<SkuEsModel> skuEsModelList);
+    R setProductStatusUp(@RequestBody List<SkuEsModel> skuEsModelList);
 }

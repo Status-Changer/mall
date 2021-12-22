@@ -17,9 +17,5 @@ import java.util.List;
  */
 @Mapper
 public interface AttrDao extends BaseMapper<AttrEntity> {
-    @Select("<script>SELECT `attr_id` FROM `pms_attr` WHERE `attr_id` IN " +
-            "<foreach collection='productAttrValueEntityIds' item='id' seperator=',' open='(' close=')'>" +
-            "#{id}" +
-            "</foreach>AND search_type=1</script>")
     List<Long> selectSearchableAttrIds(@Param("productAttrValueEntityIds") List<Long> productAttrValueEntityIds);
 }

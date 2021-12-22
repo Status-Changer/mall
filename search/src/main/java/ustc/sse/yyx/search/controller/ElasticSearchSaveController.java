@@ -3,6 +3,7 @@ package ustc.sse.yyx.search.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ustc.sse.yyx.common.to.es.SkuEsModel;
@@ -24,7 +25,7 @@ public class ElasticSearchSaveController {
     }
 
     @PostMapping("/product")
-    public R setProductStatusUp(List<SkuEsModel> skuEsModelList) {
+    public R setProductStatusUp(@RequestBody List<SkuEsModel> skuEsModelList) {
         boolean b;
         try {
             b = productSaveService.setStatusUp(skuEsModelList);

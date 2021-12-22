@@ -46,10 +46,11 @@ public class ProductSaveServiceImpl implements ProductSaveService {
 
         // TODO 如果出现错误则处理错误
         if (bulkResponse.hasFailures()) {
-            List<String> errorList = Arrays.stream(bulkResponse.getItems()).map(BulkItemResponse::getId).collect(Collectors.toList());
-            log.error("Product Up ERROR: 商品上架错误 " +  errorList);
+            log.error("Product Up ERROR: 商品上架错误 " + bulkResponse.buildFailureMessage());
             return false;
         }
+        List<String> itemList = Arrays.stream(bulkResponse.getItems()).map(BulkItemResponse::getId).collect(Collectors.toList());
+        log.info("Product Up Finished: 商品上架完成 {}", itemList);
         return true;
     }
 }

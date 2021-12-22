@@ -12,6 +12,8 @@ spring:
     name: mall-product
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
 
 
 mybatis-plus:
@@ -27,4 +29,3 @@ server:
 logging:
   level:
     ustc.sse.yyx.product: debug
-

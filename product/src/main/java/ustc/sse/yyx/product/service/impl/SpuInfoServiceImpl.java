@@ -1,5 +1,6 @@
 package ustc.sse.yyx.product.service.impl;
 
+import com.alibaba.fastjson.TypeReference;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -249,8 +250,9 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         Map<Long, Boolean> skuIdHasStockMap = null;
         try {
             List<Long> skuIdList = skuInfoEntities.stream().map(SkuInfoEntity::getSkuId).collect(Collectors.toList());
-            R<List<SkuHasStockVo>> skuHasStockList = wareFeignService.skuHasStock(skuIdList);
-            skuIdHasStockMap = skuHasStockList.getData().stream().collect(Collectors.toMap(SkuHasStockVo::getSkuId, SkuHasStockVo::getHasStock));
+            R r = wareFeignService.skuHasStock(skuIdList);
+            TypeReference<List<SkuHasStockVo>> typeReference = new TypeReference<List<SkuHasStockVo>>() {};
+            skuIdHasStockMap = r.getData(typeReference).stream().collect(Collectors.toMap(SkuHasStockVo::getSkuId, SkuHasStockVo::getHasStock));
         } catch (Exception e) {
             log.error("Ware Service ERROR: 库存服务查询异常", e);
         }
@@ -291,6 +293,10 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         } else {
             // 远程调用失败
             // TODO 重复调用？接口幂等性；重试机制等
+            // Feign 调用流程
+            // 1. 构造请求数据，将对象转换为JSON格式
+            // 2. 发送请求进行执行：executeAndDecode
+            // 3. 执行请求有重试机制 Retryer
         }
     }
 }
