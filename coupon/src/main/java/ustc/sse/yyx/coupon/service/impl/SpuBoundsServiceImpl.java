@@ -1,16 +1,16 @@
 package ustc.sse.yyx.coupon.service.impl;
 
-import org.springframework.stereotype.Service;
-import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.coupon.dao.SpuBoundsDao;
 import ustc.sse.yyx.coupon.entity.SpuBoundsEntity;
 import ustc.sse.yyx.coupon.service.SpuBoundsService;
+
+import java.util.Map;
 
 
 @Service("spuBoundsService")

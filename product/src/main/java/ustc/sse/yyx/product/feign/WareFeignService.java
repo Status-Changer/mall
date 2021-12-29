@@ -4,7 +4,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import ustc.sse.yyx.common.utils.R;
-import ustc.sse.yyx.ware.vo.SkuHasStockVo;
 
 import java.util.List;
 

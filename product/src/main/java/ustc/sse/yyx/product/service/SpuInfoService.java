@@ -2,7 +2,6 @@ package ustc.sse.yyx.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import ustc.sse.yyx.common.utils.PageUtils;
-import ustc.sse.yyx.product.entity.SpuInfoDescEntity;
 import ustc.sse.yyx.product.entity.SpuInfoEntity;
 import ustc.sse.yyx.product.vo.SpuSaveVo;
 

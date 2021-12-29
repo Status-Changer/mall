@@ -123,5 +123,4 @@
         <maven.compiler.target>15</maven.compiler.target>
         <project-version>1</project-version>
     </properties>
-
 </project>

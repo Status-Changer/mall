@@ -1,20 +1,13 @@
 package ustc.sse.yyx.product.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import jdk.jfr.Category;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.product.dao.BrandDao;
 import ustc.sse.yyx.product.dao.CategoryBrandRelationDao;
 import ustc.sse.yyx.product.dao.CategoryDao;
@@ -23,6 +16,10 @@ import ustc.sse.yyx.product.entity.CategoryBrandRelationEntity;
 import ustc.sse.yyx.product.entity.CategoryEntity;
 import ustc.sse.yyx.product.service.BrandService;
 import ustc.sse.yyx.product.service.CategoryBrandRelationService;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("categoryBrandRelationService")

@@ -25,7 +25,6 @@ mybatis-plus:
       logic-not-delete-value: 0 # 全局逻辑删除规则
 server:
   port: 10000
-
 logging:
   level:
-    ustc.sse.yyx.product: debug
+    ustc.sse.yyx.product: info

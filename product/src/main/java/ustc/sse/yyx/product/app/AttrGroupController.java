@@ -1,22 +1,21 @@
 package ustc.sse.yyx.product.app;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import ustc.sse.yyx.common.utils.PageUtils;
+import ustc.sse.yyx.common.utils.R;
 import ustc.sse.yyx.product.entity.AttrEntity;
 import ustc.sse.yyx.product.entity.AttrGroupEntity;
 import ustc.sse.yyx.product.service.AttrAttrgroupRelationService;
 import ustc.sse.yyx.product.service.AttrGroupService;
-import ustc.sse.yyx.common.utils.PageUtils;
-import ustc.sse.yyx.common.utils.R;
 import ustc.sse.yyx.product.service.AttrService;
 import ustc.sse.yyx.product.service.CategoryService;
 import ustc.sse.yyx.product.vo.AttrGroupRelationVo;
 import ustc.sse.yyx.product.vo.AttrGroupWithAttrsVo;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 
 /**

@@ -1,18 +1,13 @@
 package ustc.sse.yyx.product.service.impl;
 
 import com.alibaba.fastjson.TypeReference;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.*;
-import java.util.stream.Collectors;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 import ustc.sse.yyx.common.constant.ProductConstant;
 import ustc.sse.yyx.common.to.SkuReductionTo;
@@ -20,7 +15,6 @@ import ustc.sse.yyx.common.to.SpuBoundsTo;
 import ustc.sse.yyx.common.to.es.SkuEsModel;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.common.utils.R;
 import ustc.sse.yyx.product.dao.SpuInfoDao;
 import ustc.sse.yyx.product.entity.*;
@@ -30,6 +24,10 @@ import ustc.sse.yyx.product.feign.WareFeignService;
 import ustc.sse.yyx.product.service.*;
 import ustc.sse.yyx.product.vo.*;
 import ustc.sse.yyx.ware.vo.SkuHasStockVo;
+
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service("spuInfoService")

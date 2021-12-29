@@ -1,19 +1,14 @@
 package ustc.sse.yyx.product.app;
 
-import java.util.Arrays;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import ustc.sse.yyx.product.entity.CommentReplayEntity;
-import ustc.sse.yyx.product.service.CommentReplayService;
+import org.springframework.web.bind.annotation.*;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
+import ustc.sse.yyx.product.entity.CommentReplayEntity;
+import ustc.sse.yyx.product.service.CommentReplayService;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 

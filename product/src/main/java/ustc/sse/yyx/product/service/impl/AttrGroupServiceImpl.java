@@ -1,28 +1,24 @@
 package ustc.sse.yyx.product.service.impl;
 
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.product.dao.AttrGroupDao;
 import ustc.sse.yyx.product.entity.AttrEntity;
 import ustc.sse.yyx.product.entity.AttrGroupEntity;
 import ustc.sse.yyx.product.service.AttrGroupService;
 import ustc.sse.yyx.product.service.AttrService;
 import ustc.sse.yyx.product.vo.AttrGroupWithAttrsVo;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("attrGroupService")

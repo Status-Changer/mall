@@ -1,22 +1,17 @@
 package ustc.sse.yyx.product.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 import ustc.sse.yyx.common.constant.ProductConstant;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.product.dao.AttrAttrgroupRelationDao;
 import ustc.sse.yyx.product.dao.AttrDao;
 import ustc.sse.yyx.product.dao.AttrGroupDao;
@@ -30,6 +25,11 @@ import ustc.sse.yyx.product.service.CategoryService;
 import ustc.sse.yyx.product.vo.AttrGroupRelationVo;
 import ustc.sse.yyx.product.vo.AttrResponseVo;
 import ustc.sse.yyx.product.vo.AttrVo;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("attrService")

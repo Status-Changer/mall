@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Main-Class: ustc.sse.yyx.ware.WareApplication
+Class-Path: httpasyncclient-4.1.4.jar simpleclient-0.10.0.jar spring-boo
+ t-starter-validation-2.5.6.jar spring-tx-5.3.12.jar jackson-annotations
+ -2.12.5.jar guava-24.1.1-jre.jar spring-boot-starter-web-2.5.6.jar java
+ x.el-3.0.1-b12.jar lombok-1.18.22.jar bcprov-jdk15on-1.68.jar nacos-cli
+ ent-1.4.1.jar spring-core-5.3.12.jar mysql-connector-java-8.0.27.jar sp
+ ring-beans-5.3.12.jar spring-cloud-commons-3.0.4.jar commons-io-2.2.jar
+  spring-cloud-starter-alibaba-nacos-discovery-2021.1.jar commons-lang-2
+ .6.jar feign-core-10.12.jar j2objc-annotations-1.1.jar spring-cloud-sta
+ rter-bootstrap-3.0.4.jar httpclient-4.5.13.jar mybatis-spring-2.0.3.jar
+  classmate-1.5.1.jar jsqlparser-3.1.jar spring-boot-2.5.6.jar spring-bo
+ ot-starter-json-2.5.6.jar jackson-datatype-jsr310-2.12.5.jar spring-jdb
+ c-5.3.12.jar spring-context-5.3.12.jar jsr305-1.3.9.jar spring-security
+ -rsa-1.0.10.RELEASE.jar nacos-common-1.4.1.jar spring-cloud-starter-ali
+ baba-nacos-config-2021.1.jar spring-expression-5.3.12.jar spring-jcl-5.
+ 3.12.jar httpcore-4.4.14.jar jul-to-slf4j-1.7.32.jar validation-api-2.0
+ .1.Final.jar reactor-extra-3.4.5.jar mybatis-plus-boot-starter-3.3.1.ja
+ r spring-cloud-starter-loadbalancer-3.0.4.jar mybatis-plus-3.3.1.jar as
+ pectjweaver-1.9.7.jar bcpkix-jdk15on-1.68.jar spring-context-support-1.
+ 0.10.jar mybatis-plus-extension-3.3.1.jar feign-form-3.8.0.jar feign-sl
+ f4j-10.12.jar spring-boot-starter-logging-2.5.6.jar spring-web-5.3.12.j
+ ar spring-cloud-starter-3.0.4.jar spring-boot-starter-cache-2.5.6.jar c
+ ommons-fileupload-1.4.jar jakarta.annotation-api-1.3.5.jar spring-boot-
+ starter-tomcat-2.5.6.jar mybatis-3.5.3.jar reactive-streams-1.0.3.jar s
+ pring-context-support-5.3.12.jar mybatis-plus-core-3.3.1.jar logback-co
+ re-1.2.6.jar checker-compat-qual-2.0.0.jar evictor-1.0.0.jar logback-cl
+ assic-1.2.6.jar jackson-core-2.12.5.jar tomcat-embed-websocket-9.0.54.j
+ ar hibernate-validator-6.2.0.Final.jar jakarta.validation-api-2.0.2.jar
+  mybatis-plus-annotation-3.3.1.jar spring-cloud-openfeign-core-3.0.4.ja
+ r tomcat-embed-el-9.0.54.jar spring-boot-autoconfigure-2.5.6.jar fastjs
+ on-1.2.72.jar spring-cloud-alibaba-commons-2021.1.jar HikariCP-4.0.3.ja
+ r jackson-databind-2.12.5.jar error_prone_annotations-2.1.3.jar reactor
+ -core-3.4.11.jar spring-security-crypto-5.5.3.jar tomcat-embed-core-9.0
+ .54.jar spring-cloud-context-3.0.4.jar slf4j-api-1.7.32.jar spring-boot
+ -starter-aop-2.5.6.jar spring-aop-5.3.12.jar spring-boot-starter-jdbc-2
+ .5.6.jar snakeyaml-1.28.jar jackson-module-parameter-names-2.12.5.jar s
+ pring-cloud-loadbalancer-3.0.4.jar commons-codec-1.15.jar nacos-api-1.4
+ .1.jar jboss-logging-3.4.2.Final.jar spring-webmvc-5.3.12.jar spring-cl
+ oud-starter-openfeign-3.0.4.jar animal-sniffer-annotations-1.14.jar jac
+ kson-datatype-jdk8-2.12.5.jar log4j-api-2.14.1.jar log4j-to-slf4j-2.14.
+ 1.jar spring-boot-starter-2.5.6.jar feign-form-spring-3.8.0.jar httpcor
+ e-nio-4.4.14.jar
+

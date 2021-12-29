@@ -1,8 +1,8 @@
 package ustc.sse.yyx.coupon.dao;
 
-import ustc.sse.yyx.coupon.entity.SeckillSessionEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import ustc.sse.yyx.coupon.entity.SeckillSessionEntity;
 
 /**
  * 秒杀活动场次

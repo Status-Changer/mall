@@ -1,19 +1,16 @@
 package ustc.sse.yyx.coupon.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
+import ustc.sse.yyx.common.utils.PageUtils;
+import ustc.sse.yyx.common.utils.R;
+import ustc.sse.yyx.coupon.entity.CouponEntity;
+import ustc.sse.yyx.coupon.service.CouponService;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.*;
-
-import ustc.sse.yyx.coupon.entity.CouponEntity;
-import ustc.sse.yyx.coupon.service.CouponService;
-import ustc.sse.yyx.common.utils.PageUtils;
-import ustc.sse.yyx.common.utils.R;
 
 
 

@@ -1,16 +1,15 @@
 package ustc.sse.yyx.product.app;
 
-import java.util.Arrays;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import ustc.sse.yyx.product.entity.SpuInfoEntity;
-import ustc.sse.yyx.product.service.SpuInfoService;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.R;
+import ustc.sse.yyx.product.entity.SpuInfoEntity;
+import ustc.sse.yyx.product.service.SpuInfoService;
 import ustc.sse.yyx.product.vo.SpuSaveVo;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 /**

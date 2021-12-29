@@ -1,8 +1,8 @@
 package ustc.sse.yyx.product.dao;
 
-import ustc.sse.yyx.product.entity.SpuCommentEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import ustc.sse.yyx.product.entity.SpuCommentEntity;
 
 /**
  * ��Ʒ����

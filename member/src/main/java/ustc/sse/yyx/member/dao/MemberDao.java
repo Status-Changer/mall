@@ -1,8 +1,8 @@
 package ustc.sse.yyx.member.dao;
 
-import ustc.sse.yyx.member.entity.MemberEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import ustc.sse.yyx.member.entity.MemberEntity;
 
 /**
  * 会员

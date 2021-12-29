@@ -1,21 +1,20 @@
 package ustc.sse.yyx.product.service.impl;
 
-import org.springframework.stereotype.Service;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.product.dao.CategoryDao;
 import ustc.sse.yyx.product.entity.CategoryEntity;
 import ustc.sse.yyx.product.service.CategoryBrandRelationService;
 import ustc.sse.yyx.product.service.CategoryService;
+import ustc.sse.yyx.product.vo.Catalog2Vo;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service("categoryService")
@@ -69,6 +68,46 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public void updateCascade(CategoryEntity category) {
         this.updateById(category);
         categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
+    }
+
+    @Override
+    public List<CategoryEntity> getLevelOneCategories() {
+        return baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", 0));
+    }
+
+    @Override
+    public Map<String, List<Catalog2Vo>> getCatalogJSON() {
+        // 查出所有一级分类
+        List<CategoryEntity> levelOneCategories = this.getLevelOneCategories();
+
+        return levelOneCategories.stream().collect(Collectors.toMap(
+                key -> key.getCatId().toString(),
+                value -> {
+                    // 查到这个一级分类的所有二级分类
+                    List<CategoryEntity> categoryEntities = baseMapper.selectList(
+                            new QueryWrapper<CategoryEntity>().eq("parent_cid", value.getCatId()));
+                    List<Catalog2Vo> catalog2Vos = new ArrayList<>();
+                    if (categoryEntities != null) {
+                        // 给二级分类找到三级分类
+                        catalog2Vos = categoryEntities.stream().map(level2Catalog -> {
+                            Catalog2Vo catalog2Vo = new Catalog2Vo(value.getCatId().toString(), null,
+                                    level2Catalog.getCatId().toString(), level2Catalog.getName());
+                            List<CategoryEntity> level3Catalogs = baseMapper.selectList(new QueryWrapper<CategoryEntity>()
+                                    .eq("parent_cid", level2Catalog.getCatId()));
+                            if (level3Catalogs != null) {
+                                List<Catalog2Vo.Catalog3Vo> catalog3Vos = level3Catalogs.stream().map(level3Catalog -> {
+                                    // 封装成指定格式
+                                    return new Catalog2Vo.Catalog3Vo(level2Catalog.getCatId().toString(),
+                                            level3Catalog.getCatId().toString(), level3Catalog.getName());
+                                }).collect(Collectors.toList());
+                                catalog2Vo.setCatalog3List(catalog3Vos);
+                            }
+                            return catalog2Vo;
+                        }).collect(Collectors.toList());
+                    }
+                    return catalog2Vos;
+                }
+        ));
     }
 
     private List<Long> findParentPath(Long catelogId, List<Long> path) {

@@ -1,22 +1,15 @@
 package ustc.sse.yyx.coupon.service.impl;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ustc.sse.yyx.common.to.MemberPrice;
 import ustc.sse.yyx.common.to.SkuReductionTo;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.coupon.dao.SkuFullReductionDao;
 import ustc.sse.yyx.coupon.entity.MemberPriceEntity;
 import ustc.sse.yyx.coupon.entity.SkuFullReductionEntity;
@@ -24,6 +17,11 @@ import ustc.sse.yyx.coupon.entity.SkuLadderEntity;
 import ustc.sse.yyx.coupon.service.MemberPriceService;
 import ustc.sse.yyx.coupon.service.SkuFullReductionService;
 import ustc.sse.yyx.coupon.service.SkuLadderService;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("skuFullReductionService")

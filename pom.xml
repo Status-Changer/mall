@@ -18,5 +18,7 @@
         <module>common</module>
         <module>renren-fast</module>
         <module>third-party</module>
+        <module>search</module>
+        <module>gateway</module>
     </modules>
 </project>

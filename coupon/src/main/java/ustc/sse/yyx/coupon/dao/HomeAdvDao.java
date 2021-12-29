@@ -1,8 +1,8 @@
 package ustc.sse.yyx.coupon.dao;
 
-import ustc.sse.yyx.coupon.entity.HomeAdvEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import ustc.sse.yyx.coupon.entity.HomeAdvEntity;
 
 /**
  * 首页轮播广告

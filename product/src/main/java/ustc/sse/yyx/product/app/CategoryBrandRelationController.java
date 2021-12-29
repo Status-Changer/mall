@@ -1,20 +1,19 @@
 package ustc.sse.yyx.product.app;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import ustc.sse.yyx.common.utils.PageUtils;
+import ustc.sse.yyx.common.utils.R;
+import ustc.sse.yyx.product.entity.BrandEntity;
+import ustc.sse.yyx.product.entity.CategoryBrandRelationEntity;
+import ustc.sse.yyx.product.service.CategoryBrandRelationService;
+import ustc.sse.yyx.product.vo.BrandVo;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import ustc.sse.yyx.product.entity.BrandEntity;
-import ustc.sse.yyx.product.entity.CategoryBrandRelationEntity;
-import ustc.sse.yyx.product.service.CategoryBrandRelationService;
-import ustc.sse.yyx.common.utils.PageUtils;
-import ustc.sse.yyx.common.utils.R;
-import ustc.sse.yyx.product.vo.BrandVo;
 
 
 /**

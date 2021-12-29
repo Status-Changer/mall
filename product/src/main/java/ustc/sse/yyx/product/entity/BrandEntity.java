@@ -2,9 +2,6 @@ package ustc.sse.yyx.product.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 import ustc.sse.yyx.common.validation.AddGroup;
@@ -13,6 +10,7 @@ import ustc.sse.yyx.common.validation.UpdateGroup;
 import ustc.sse.yyx.common.validation.UpdateStatusGroup;
 
 import javax.validation.constraints.*;
+import java.io.Serializable;
 
 /**
  * Ʒ��

@@ -1,19 +1,17 @@
 package ustc.sse.yyx.product.service.impl;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
-
 import ustc.sse.yyx.product.dao.ProductAttrValueDao;
 import ustc.sse.yyx.product.entity.ProductAttrValueEntity;
 import ustc.sse.yyx.product.service.ProductAttrValueService;
+
+import java.util.List;
+import java.util.Map;
 
 
 @Service("productAttrValueService")

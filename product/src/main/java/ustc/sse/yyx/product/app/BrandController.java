@@ -1,23 +1,18 @@
 package ustc.sse.yyx.product.app;
 
-import java.util.Arrays;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import ustc.sse.yyx.common.utils.PageUtils;
+import ustc.sse.yyx.common.utils.R;
 import ustc.sse.yyx.common.validation.AddGroup;
 import ustc.sse.yyx.common.validation.UpdateGroup;
 import ustc.sse.yyx.common.validation.UpdateStatusGroup;
 import ustc.sse.yyx.product.entity.BrandEntity;
 import ustc.sse.yyx.product.service.BrandService;
-import ustc.sse.yyx.common.utils.PageUtils;
-import ustc.sse.yyx.common.utils.R;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 /**

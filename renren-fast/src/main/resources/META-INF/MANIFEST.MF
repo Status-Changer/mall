@@ -1,0 +1,67 @@
+Manifest-Version: 1.0
+Main-Class: io.renren.RenrenApplication
+Class-Path: spring-security-rsa-1.0.10.RELEASE.jar filters-2.0.235-1.jar
+  snakeyaml-1.28.jar tomcat-embed-el-9.0.54.jar tomcat-embed-core-9.0.54
+ .jar springfox-spi-2.7.0.jar spring-cloud-starter-openfeign-3.0.4.jar l
+ og4j-api-2.14.1.jar shiro-crypto-cipher-1.8.0.jar classmate-1.5.1.jar s
+ pring-security-crypto-5.5.3.jar mysql-connector-java-8.0.27.jar springf
+ ox-swagger-ui-2.7.0.jar shiro-config-core-1.8.0.jar springfox-core-2.7.
+ 0.jar jackson-databind-2.12.5.jar cos_api-4.4.jar springfox-schema-2.7.
+ 0.jar spring-jcl-5.3.12.jar quartz-2.3.2.jar spring-cloud-starter-aliba
+ ba-nacos-discovery-2021.1.jar jakarta.annotation-api-1.3.5.jar mybatis-
+ spring-2.0.3.jar spring-cloud-commons-3.0.4.jar shiro-crypto-hash-1.8.0
+ .jar spring-cloud-alibaba-commons-2021.1.jar reflections-0.9.11.jar evi
+ ctor-1.0.0.jar spring-plugin-core-1.2.0.RELEASE.jar shiro-core-1.8.0.ja
+ r gson-2.8.5.jar httpcore-nio-4.4.14.jar netty-buffer-4.1.69.Final.jar 
+ lettuce-core-6.1.5.RELEASE.jar httpclient-4.5.13.jar springfox-swagger-
+ common-2.7.0.jar ojdbc6-11.2.0.3.jar spring-boot-starter-logging-2.5.6.
+ jar hutool-all-4.1.1.jar hamcrest-core-2.2.jar mybatis-3.5.3.jar postgr
+ esql-42.2.24.jar validation-api-2.0.1.Final.jar spring-webmvc-5.3.12.ja
+ r spring-data-keyvalue-2.5.6.jar spring-boot-starter-cache-2.5.6.jar js
+ on-20140107.jar qiniu-java-sdk-7.2.23.jar spring-boot-starter-jdbc-2.5.
+ 6.jar feign-form-spring-3.8.0.jar jsqlparser-3.1.jar spring-cloud-conte
+ xt-3.0.1.jar mybatis-plus-extension-3.3.1.jar spring-jdbc-5.3.12.jar sp
+ ring-context-5.3.12.jar shiro-lang-1.8.0.jar netty-common-4.1.69.Final.
+ jar logback-classic-1.2.6.jar jackson-module-parameter-names-2.12.5.jar
+  mybatis-plus-annotation-3.3.1.jar spring-boot-starter-web-2.5.6.jar ok
+ http-3.14.9.jar swagger-annotations-1.5.13.jar spring-data-redis-2.5.6.
+ jar commons-logging-1.1.1.jar hibernate-validator-6.2.0.Final.jar sprin
+ g-data-commons-2.5.6.jar spring-boot-starter-json-2.5.6.jar netty-handl
+ er-4.1.69.Final.jar springfox-spring-web-2.7.0.jar shiro-event-1.8.0.ja
+ r jackson-datatype-jdk8-2.12.5.jar netty-codec-4.1.69.Final.jar checker
+ -qual-3.5.0.jar lombok-1.18.22.jar mybatis-plus-boot-starter-3.3.1.jar 
+ mybatis-plus-3.3.1.jar encoder-1.2.2.jar spring-cloud-starter-alibaba-n
+ acos-config-2021.1.jar junit-4.13.2.jar spring-cloud-openfeign-core-3.0
+ .4.jar spring-boot-starter-validation-2.5.6.jar spring-plugin-metadata-
+ 1.2.0.RELEASE.jar slf4j-api-1.7.32.jar bcprov-jdk15on-1.68.jar jakarta.
+ validation-api-2.0.2.jar httpcore-4.4.14.jar commons-io-2.5.jar httpasy
+ ncclient-4.1.4.jar spring-tx-5.3.12.jar spring-cloud-starter-3.0.4.jar 
+ spring-cloud-starter-bootstrap-3.0.4.jar jdom-1.1.jar reactive-streams-
+ 1.0.3.jar byte-buddy-1.10.22.jar commons-lang-2.6.jar simpleclient-0.10
+ .0.jar spring-boot-2.5.6.jar bcpkix-jdk15on-1.68.jar spring-oxm-5.3.12.
+ jar spring-beans-5.3.12.jar spring-core-5.3.12.jar HikariCP-4.0.3.jar a
+ liyun-sdk-oss-2.8.3.jar spring-context-support-1.0.10.jar javax.el-3.0.
+ 1-b12.jar spring-web-5.3.12.jar kaptcha-2.3.2.jar springfox-swagger2-2.
+ 7.0.jar tomcat-embed-websocket-9.0.54.jar spring-boot-autoconfigure-2.5
+ .6.jar nacos-api-1.4.1.jar nacos-client-1.4.1.jar mapstruct-1.1.0.Final
+ .jar commons-fileupload-1.2.2.jar reactor-extra-3.4.5.jar spring-boot-c
+ onfiguration-processor-2.5.6.jar jackson-datatype-jsr310-2.12.5.jar log
+ 4j-to-slf4j-2.14.1.jar spring-boot-starter-data-redis-2.5.6.jar jackson
+ -annotations-2.12.5.jar jackson-core-2.12.5.jar shiro-crypto-core-1.8.0
+ .jar commons-codec-1.10.jar druid-1.1.13.jar hamcrest-2.2.jar swagger-m
+ odels-1.5.13.jar jboss-logging-3.4.2.Final.jar joda-time-2.9.9.jar jjwt
+ -0.9.1.jar spring-boot-starter-tomcat-2.5.6.jar javax.servlet-api-4.0.1
+ .jar aspectjweaver-1.9.7.jar shiro-spring-1.8.0.jar fastjson-1.2.72.jar
+  okio-1.17.2.jar mybatis-plus-core-3.3.1.jar spring-cloud-starter-loadb
+ alancer-3.0.4.jar commons-configuration-1.10.jar spring-expression-5.3.
+ 12.jar reactor-core-3.4.11.jar netty-resolver-4.1.69.Final.jar guava-18
+ .0.jar shiro-cache-1.8.0.jar spring-boot-starter-aop-2.5.6.jar sqljdbc4
+ -4.0.jar feign-core-10.12.jar spring-context-support-5.3.12.jar javassi
+ st-3.21.0-GA.jar commons-beanutils-1.9.4.jar druid-spring-boot-starter-
+ 1.1.13.jar httpmime-4.5.13.jar shiro-config-ogdl-1.8.0.jar feign-slf4j-
+ 10.12.jar logback-core-1.2.6.jar spring-aop-5.3.12.jar shiro-web-1.8.0.
+ jar jul-to-slf4j-1.7.32.jar netty-transport-4.1.69.Final.jar commons-co
+ llections-3.2.2.jar spring-cloud-loadbalancer-3.0.4.jar feign-form-3.8.
+ 0.jar mchange-commons-java-0.2.15.jar spring-boot-starter-2.5.6.jar nac
+ os-common-1.4.1.jar
+
