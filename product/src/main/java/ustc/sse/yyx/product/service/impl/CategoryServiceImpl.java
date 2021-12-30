@@ -1,10 +1,15 @@
 package ustc.sse.yyx.product.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import ustc.sse.yyx.common.utils.PageUtils;
 import ustc.sse.yyx.common.utils.Query;
 import ustc.sse.yyx.product.dao.CategoryDao;
@@ -20,9 +25,13 @@ import java.util.stream.Collectors;
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
     private final CategoryBrandRelationService categoryBrandRelationService;
+    private final StringRedisTemplate stringRedisTemplate;
 
-    public CategoryServiceImpl(CategoryBrandRelationService categoryBrandRelationService) {
+    @Autowired
+    public CategoryServiceImpl(CategoryBrandRelationService categoryBrandRelationService,
+                               StringRedisTemplate stringRedisTemplate) {
         this.categoryBrandRelationService = categoryBrandRelationService;
+        this.stringRedisTemplate = stringRedisTemplate;
     }
 
     @Override
@@ -75,25 +84,51 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", 0));
     }
 
+    // TODO 压力测试时会产生堆外内存溢出：OutOfDirectMemoryError
+    // 是由于lettuce客户端的bug导致Netty操作的堆外内存异常
+    // 在没有显式指定堆外内存时，默认会使用-Xmx的值 是由于没有及时的内存释放
+    // 而可以通过 -Dio.netty.maxDirectMemory 进行设置
+    // SOLUTION: 不能只调大堆外内存，而是 1) 升级lettuce客户端 2) 使用jedis客户端
     @Override
     public Map<String, List<Catalog2Vo>> getCatalogJSON() {
+        /* 加入缓存逻辑 */
+        String catalogJson = stringRedisTemplate.opsForValue().get("catalogJson");
+
+        // 缓存缺失
+        if (!StringUtils.hasLength(catalogJson)) {
+            Map<String, List<Catalog2Vo>> catalogJSONFromDatabase = getCatalogJSONFromDatabase();
+
+            // 需要先将查出的对象转换为JSON字符串 相比较于Java序列化 JSON的处理可以跨语言 跨平台兼容
+            String catalogJSONString = JSON.toJSONString(catalogJSONFromDatabase);
+            stringRedisTemplate.opsForValue().set("catalogJson", catalogJSONString);
+            return catalogJSONFromDatabase;
+        }
+
+        // 最终得到的是JSON字符串，需要将其转换为Java对象
+        return JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catalog2Vo>>>(){});
+    }
+
+
+    private Map<String, List<Catalog2Vo>> getCatalogJSONFromDatabase() {
+        /* OPTIMIZATION 1：将数据库的多次查询变为一次 */
+        // null 表示查询所有的内容 （select *）
+        List<CategoryEntity> categoryEntityList = baseMapper.selectList(null);
+
         // 查出所有一级分类
-        List<CategoryEntity> levelOneCategories = this.getLevelOneCategories();
+        List<CategoryEntity> levelOneCategories = getParentCid(categoryEntityList, 0L);
 
         return levelOneCategories.stream().collect(Collectors.toMap(
                 key -> key.getCatId().toString(),
                 value -> {
                     // 查到这个一级分类的所有二级分类
-                    List<CategoryEntity> categoryEntities = baseMapper.selectList(
-                            new QueryWrapper<CategoryEntity>().eq("parent_cid", value.getCatId()));
+                    List<CategoryEntity> categoryEntities = getParentCid(categoryEntityList, value.getCatId());
                     List<Catalog2Vo> catalog2Vos = new ArrayList<>();
                     if (categoryEntities != null) {
                         // 给二级分类找到三级分类
                         catalog2Vos = categoryEntities.stream().map(level2Catalog -> {
                             Catalog2Vo catalog2Vo = new Catalog2Vo(value.getCatId().toString(), null,
                                     level2Catalog.getCatId().toString(), level2Catalog.getName());
-                            List<CategoryEntity> level3Catalogs = baseMapper.selectList(new QueryWrapper<CategoryEntity>()
-                                    .eq("parent_cid", level2Catalog.getCatId()));
+                            List<CategoryEntity> level3Catalogs = getParentCid(categoryEntityList, level2Catalog.getCatId());
                             if (level3Catalogs != null) {
                                 List<Catalog2Vo.Catalog3Vo> catalog3Vos = level3Catalogs.stream().map(level3Catalog -> {
                                     // 封装成指定格式
@@ -108,6 +143,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                     return catalog2Vos;
                 }
         ));
+    }
+
+    private List<CategoryEntity> getParentCid(List<CategoryEntity> categoryEntityList, Long parentCid) {
+        return categoryEntityList.stream()
+                .filter(categoryEntity -> categoryEntity.getParentCid().equals(parentCid))
+                .collect(Collectors.toList());
     }
 
     private List<Long> findParentPath(Long catelogId, List<Long> path) {
