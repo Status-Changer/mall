@@ -139,7 +139,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
         // 分类信息
         Long catelogId = attrEntity.getCatelogId();
-        Long[] catelogPath = categoryService.findCatelogPath(catelogId);
+        Long[] catelogPath = categoryService.findCatalogPath(catelogId);
         attrResponseVo.setCatelogPath(catelogPath);
         CategoryEntity categoryEntity = categoryDao.selectById(catelogId);
         if (categoryEntity != null) {

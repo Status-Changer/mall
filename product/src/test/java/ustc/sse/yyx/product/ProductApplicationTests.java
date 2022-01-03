@@ -2,13 +2,12 @@ package ustc.sse.yyx.product;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import ustc.sse.yyx.product.service.CategoryService;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 @SpringBootTest
@@ -16,6 +15,9 @@ import java.util.UUID;
 class ProductApplicationTests {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedissonClient redissonClient;
 
     @Test
     public void testStringRedisTemplate() {
@@ -26,6 +28,12 @@ class ProductApplicationTests {
         // 查询
         System.out.println(stringStringValueOperations.get("hello"));
     }
+
+    @Test
+    public void testRedisson() {
+        System.out.println(redissonClient);
+    }
+
     @Test
     void contextLoads() {
 

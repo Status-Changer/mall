@@ -98,7 +98,7 @@ public class AttrGroupController {
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
 		AttrGroupEntity attrGroup = attrGroupService.getById(attrGroupId);
         Long catelogId = attrGroup.getCatelogId();
-        Long[] path = categoryService.findCatelogPath(catelogId);
+        Long[] path = categoryService.findCatalogPath(catelogId);
         attrGroup.setCatelogPath(path);
         return R.ok().put("attrGroup", attrGroup);
     }
