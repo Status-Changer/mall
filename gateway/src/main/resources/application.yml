@@ -5,7 +5,7 @@ spring:
         - id: product_route
           uri: lb://mall-product
           predicates:
-            - Path=/api/product/**,/hello
+            - Path=/api/product/**
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
         - id: thirdparty_route
@@ -33,7 +33,13 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
 
+        - id: mall_search_route
+          uri: lb://mall-search
+          predicates:
+            - Path=/search/**
+            - RemoteAddr=101.43.83.64/24
         - id: mall_host_route
           uri: lb://mall-product
           predicates:
+            - Path=/
             - RemoteAddr=101.43.83.64/24

@@ -10,5 +10,7 @@ spring:
       enabled: false
   application:
     name: mall-search
+  thymeleaf:
+    cache: false
 server:
   port: 12000
