@@ -8,6 +8,8 @@ import ustc.sse.yyx.search.service.SearchService;
 import ustc.sse.yyx.search.vo.SearchParam;
 import ustc.sse.yyx.search.vo.SearchResult;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class SearchController {
     private final SearchService searchService;
@@ -23,9 +25,10 @@ public class SearchController {
      * @return 检索结果，包含页面所有信息
      */
     @GetMapping("/list.html")
-    public String listPage(SearchParam searchParam, Model model) {
+    public String listPage(SearchParam searchParam, Model model, HttpServletRequest httpServletRequest) {
+        searchParam.setQueryString(httpServletRequest.getQueryString());
         SearchResult searchResult = searchService.search(searchParam);
-        model.addAttribute("result", searchResult);
+        model.addAttribute("searchResult", searchResult);
         return "list";
     }
 }

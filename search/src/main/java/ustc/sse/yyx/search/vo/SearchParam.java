@@ -19,10 +19,12 @@ public class SearchParam {
 
     private Integer hasStock = 1; // 只显示无/有货 0/1 默认显示有货
     private String skuPriceRange; // 价格区间查询 1_400/_400/1_
-    private List<Long> brandId; // 品牌id 可以多选
+    private List<Long> brandIdList; // 品牌id 可以多选
     private List<String> attrs; // 属性 1_iOS:Android
 
     private Integer pageNum = 1; // 页码（如果搜索结果太多需要分页）
+
+    private String queryString; // 原生的所有查询条件
 }
 
 

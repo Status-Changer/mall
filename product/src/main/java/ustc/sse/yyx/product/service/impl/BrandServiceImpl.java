@@ -14,6 +14,7 @@ import ustc.sse.yyx.product.entity.BrandEntity;
 import ustc.sse.yyx.product.service.BrandService;
 import ustc.sse.yyx.product.service.CategoryBrandRelationService;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -53,6 +54,11 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
 
             // TODO: 更新其他关联
         }
+    }
+
+    @Override
+    public List<BrandEntity> getBrandsByIdList(List<Long> brandIdList) {
+        return baseMapper.selectList(new QueryWrapper<BrandEntity>().in("brand_id", brandIdList));
     }
 
 }

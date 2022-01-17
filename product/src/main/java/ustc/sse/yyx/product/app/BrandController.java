@@ -12,6 +12,7 @@ import ustc.sse.yyx.product.entity.BrandEntity;
 import ustc.sse.yyx.product.service.BrandService;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -38,6 +39,11 @@ public class BrandController {
         return R.ok().put("page", page);
     }
 
+    @GetMapping("/info")
+    public R info(@RequestParam("brandIds") List<Long> brandIdList) {
+        List<BrandEntity> brands = brandService.getBrandsByIdList(brandIdList);
+        return R.ok().put("brand", brands);
+    }
 
     /**
      * 信息
