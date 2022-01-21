@@ -9,7 +9,9 @@ import ustc.sse.yyx.common.utils.Query;
 import ustc.sse.yyx.product.dao.SkuSaleAttrValueDao;
 import ustc.sse.yyx.product.entity.SkuSaleAttrValueEntity;
 import ustc.sse.yyx.product.service.SkuSaleAttrValueService;
+import ustc.sse.yyx.product.vo.SkuItemSaleAttrVo;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -24,6 +26,11 @@ public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<SkuItemSaleAttrVo> getSaleAttrsBySpuId(Long spuId) {
+        return this.baseMapper.getSaleAttrsBySpuId(spuId);
     }
 
 }

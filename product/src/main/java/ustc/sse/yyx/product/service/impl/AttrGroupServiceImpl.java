@@ -15,6 +15,7 @@ import ustc.sse.yyx.product.entity.AttrGroupEntity;
 import ustc.sse.yyx.product.service.AttrGroupService;
 import ustc.sse.yyx.product.service.AttrService;
 import ustc.sse.yyx.product.vo.AttrGroupWithAttrsVo;
+import ustc.sse.yyx.product.vo.SpuItemAttrGroupVo;
 
 import java.util.List;
 import java.util.Map;
@@ -70,5 +71,11 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
             attrGroupWithAttrsVo.setAttrs(attrEntities);
             return attrGroupWithAttrsVo;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+        // 查出当前spu对应的所有属性的分组信息及当前分组下所有属性对应的值
+        return this.getBaseMapper().getAttrGroupWithAttrsBySpuId(spuId, catalogId);
     }
 }

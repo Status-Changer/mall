@@ -7,7 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import ustc.sse.yyx.product.dao.AttrGroupDao;
+import ustc.sse.yyx.product.service.SkuSaleAttrValueService;
+import ustc.sse.yyx.product.vo.SkuItemSaleAttrVo;
+import ustc.sse.yyx.product.vo.SkuItemVo;
+import ustc.sse.yyx.product.vo.SpuItemAttrGroupVo;
 
+import java.util.List;
 import java.util.UUID;
 
 @SpringBootTest
@@ -18,6 +24,20 @@ class ProductApplicationTests {
 
     @Autowired
     private RedissonClient redissonClient;
+
+    @Autowired
+    private AttrGroupDao attrGroupDao;
+
+    @Autowired
+    private SkuSaleAttrValueService skuSaleAttrValueService;
+
+    @Test
+    public void test() {
+//        List<SpuItemAttrGroupVo> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(1L, 225L);
+//        System.out.println(attrGroupWithAttrsBySpuId);
+        List<SkuItemSaleAttrVo> saleAttrsBySpuId = skuSaleAttrValueService.getSaleAttrsBySpuId(13L);
+        System.out.println(saleAttrsBySpuId);
+    }
 
     @Test
     public void testStringRedisTemplate() {
